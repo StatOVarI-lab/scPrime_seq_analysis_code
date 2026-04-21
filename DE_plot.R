@@ -51,7 +51,7 @@ dir.create(file.path(fig_dir, paste0("volcano_plots_", id)), showWarnings = FALS
                      
 
 pegs_selected <- markers_genes %>%
-  filter(FDR <= 0.05) %>%
+  filter(FDR <= 0.1) %>%
   count(mutation_peg, name = "n_sig") %>%
   filter(n_sig >= 10) %>%
   pull(mutation_peg)
@@ -77,7 +77,7 @@ write_csv(markers_genes,
 # ##############################################################################
 
 pegs_selected_pathways <- markers_pathway_df %>%
-  filter(FDR <= 0.05) %>%
+  filter(FDR <= 0.1) %>%
   count(mutation_peg, name = "n_sig") %>%
   filter(n_sig >= 1) %>%
   pull(mutation_peg)
